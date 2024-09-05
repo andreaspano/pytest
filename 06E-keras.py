@@ -59,6 +59,8 @@ fit = model.fit(trn_x,trn_y,epochs=120,  validation_split=0.2, shuffle=True)
 
 
 
+
+
 # plots
 plt.plot(fit.history['accuracy'])
 plt.plot(fit.history['val_accuracy'])
