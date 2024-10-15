@@ -1,29 +1,48 @@
 # pytest
 
-
-be usre that virtualenv is installed
-otherwise pip virtualenv install
-
-
-get into the existing prj dir 
-
-cd prjdir
-
-Start venv
-virtualenv .
+# install cuda
+sudo apt install nvidia-cuda-toolkit
+sudo apt install nvidia-cudnn
 
 
-Atcivate venv 
-source ./bin/activate
+# create venv
+cd myproj
+pip -m venv venv 
 
-# installa i pkhs
+# activate venv 
+source venv/bin/activate
 
-pip install pandas 
-pip install scikit-learn 
-pip install matplotlib
 
+
+# install tensorflow
+# e ci nette una vita
+python3 -m pip install tensorflow[and-cuda]
+
+# Check if TensorFlow is using GPU
+import tensorflow as tf
+tf.config.list_physical_devices('GPU')
+
+
+# NUMA node
+for a in /sys/bus/pci/devices/*; do echo 0 | sudo tee -a $a/numa_node; done
+
+
+
+
+Ref 
 # keras
 Installing NVIDIA Drivers and CUDA on Linux Mint 21.3
 https://iceburn.medium.com/installing-nvidia-drivers-and-cuda-on-linux-mint-21-3-16acdc0b0083
 
+# Install TensorFlow with pip
+https://www.tensorflow.org/install/pip
 
+
+
+
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    print("We got a GPU")
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+else:
+    print("Sorry, no GPU for you...")
