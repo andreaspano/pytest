@@ -1,7 +1,13 @@
+
+from warnings import  filterwarnings
+filterwarnings('ignore')
+
 import pandas as pd
 import numpy as np
 from datetime import datetime
 from plotnine import * 
+
+
 
 from keras.models import Sequential
 from keras.layers import Dense, SimpleRNN, LSTM
