@@ -7,7 +7,7 @@ sudo apt install nvidia-cudnn
 
 # create venv
 cd myproj
-pip -m venv venv 
+python3 -m venv venv 
 
 # activate venv 
 source venv/bin/activate
@@ -16,7 +16,12 @@ source venv/bin/activate
 
 # install tensorflow
 # e ci nette una vita
-python3 -m pip install tensorflow[and-cuda]
+python3 -m 
+pip install tensorflow[and-cuda] --force-reinstall --no-cache-dir
+pip install ipykernel --force-reinstall --no-cache-dir
+pip install seaborn --force-reinstall --no-cache-dir
+pip install matplotlib --force-reinstall --no-cache-dir
+pip install scikit-learn --force-reinstall --no-cache-dir
 
 # Check if TensorFlow is using GPU
 import tensorflow as tf
